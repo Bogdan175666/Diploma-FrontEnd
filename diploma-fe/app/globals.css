@@ -53,6 +53,7 @@ svg {
   color: #ddd8d8;
 }
 
-h1 {
+h1,
+label{
   color: #ddd8d8;
 }
