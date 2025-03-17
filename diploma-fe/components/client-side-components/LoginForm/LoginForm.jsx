@@ -13,11 +13,13 @@ export function LoginForm ({handleSubmit}) {
                 <FormInput
                     placeholder="Enter your username"
                     id="username"
-                    inputType="text"/>
+                    inputType="text"
+                    labelText="Username"/>
                 <FormInput
                     placeholder="Enter your password"
                     id="password"
                     inputType="password"
+                    labelText="Password"
                 />
                 <Button>Login me!</Button>
             </section>

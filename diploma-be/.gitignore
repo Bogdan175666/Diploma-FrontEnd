@@ -2,7 +2,6 @@
 
 # dependencies
 /node_modules
-../diploma-be/node_modules
 /.pnp
 .pnp.*
 .yarn/*
