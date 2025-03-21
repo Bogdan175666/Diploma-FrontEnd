@@ -9,7 +9,8 @@ const clientSchema = new Schema({
     mobile - developer with React Native/Flutter/Swift/Kotlin
     game - Unity/Unreal Engine
      */
-    desirableApp: {type: String, required: false}
+    desirableApp: {type: String, required: false},
+    assignedProject: {type: mongoose.Types.ObjectId, required: false, ref: 'Project'}
 })
 
 module.exports = mongoose.model('Client', clientSchema);
