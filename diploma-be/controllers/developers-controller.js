@@ -1,8 +1,21 @@
 const Developer = require("../models/developer");
+
+const getDevelopers = async (req, res, next) => {
+    let developers;
+
+    try {
+        developers = await Developer.find();
+        res.json(developers);
+    } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
+}
+
 const createDeveloper = async (req, res, next) => {
     console.log(req);
     const {name, skills} = req.body;
 
+    //Don't forget to make file uploader
     const createdDev = new Developer({
         name,
         skills,
@@ -36,5 +49,27 @@ const getDeveloperById = async (req, res, next) => {
     res.json({developer: developer.toObject({getters: true})})
 }
 
+const updateDeveloperSkills = async (req, res, next) => {
+    const devId = req.params.devId;
+
+    let developer;
+    try {
+        let {skills} = req.body;
+        if (!Array.isArray(skills)) {
+            skills = [];
+        }
+        developer = await Developer.findByIdAndUpdate(
+            devId,
+            { $set: { skills } },
+            { new: true }
+        );
+        res.json(developer);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
 exports.createDeveloper = createDeveloper;
 exports.getDeveloperById = getDeveloperById;
+exports.updateDeveloperSkills = updateDeveloperSkills;
+exports.getDevelopers = getDevelopers;

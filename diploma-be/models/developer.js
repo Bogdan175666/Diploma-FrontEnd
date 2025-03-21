@@ -7,6 +7,11 @@ const developerSchema = new Schema({
     rating: { type: Number, required: true},
     skills: {type: [String], required: true},
     image: {type: String, required: false},
+    //id for the future project
+    // assignedProject: {type: String, required: false}
+
+    //possible variants
+    //email, age
 })
 
 module.exports = mongoose.model('Developer', developerSchema);
