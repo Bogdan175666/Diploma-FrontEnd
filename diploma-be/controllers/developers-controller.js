@@ -12,7 +12,6 @@ const getDevelopers = async (req, res, next) => {
 }
 
 const createDeveloper = async (req, res, next) => {
-    console.log(req);
     const {name, skills} = req.body;
 
     //Don't forget to make file uploader
@@ -69,7 +68,33 @@ const updateDeveloperSkills = async (req, res, next) => {
     }
 }
 
+const deleteDeveloper = async (req, res, next) => {
+    let devId = req.params.devId;
+
+    let deletedDeveloper;
+
+    try {
+        deletedDeveloper = Developer.findById(devId);
+
+
+        if (!deletedDeveloper) {
+            return res.status(404).json({ message: "Developer not found" });
+        }
+    } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
+
+    try {
+        await deletedDeveloper.deleteOne();
+    } catch (e) {
+        console.log(e);
+    }
+
+    return res.status(200).json({message: "Developer deleted"});
+}
+
 exports.createDeveloper = createDeveloper;
 exports.getDeveloperById = getDeveloperById;
 exports.updateDeveloperSkills = updateDeveloperSkills;
 exports.getDevelopers = getDevelopers;
+exports.deleteDeveloper = deleteDeveloper;

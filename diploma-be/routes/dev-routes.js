@@ -13,6 +13,10 @@ router.get('/:devId', developerController.getDeveloperById)
 // POST request for creating a dev
 router.post('/createDev', developerController.createDeveloper)
 
+//PATCH request for updating skills using dev id
 router.patch('/:devId/skills', developerController.updateDeveloperSkills)
+
+//DELETE request for deleting a dev by id
+router.delete('/:devId', developerController.deleteDeveloper);
 
 module.exports = router;

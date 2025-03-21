@@ -11,7 +11,7 @@ const app = express();
 app.use(bodyParser.json());
 const url = process.env.MONGO_URI;
 
-// app.use('/api/clients', clientRoutes);
+app.use('/api/clients', clientRoutes);
 app.use('/api/devs', devRoutes);
 
 mongoose
