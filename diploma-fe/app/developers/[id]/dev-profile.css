@@ -1,0 +1,54 @@
+.dev-profile-wrapper {
+    padding-left: 60px;
+    padding-right: 30px;
+    margin-top: 50px;
+    display: flex;
+    gap: 45vw;
+    margin-bottom: 45px;
+}
+
+.dev-profile-ava-wrapper {
+    display: flex;
+    gap: 30px;
+}
+
+.dev-profile-text-wrapper {
+    padding-top: 10px;
+}
+
+.dev-profile-text-main {
+    font-size: 30px;
+    color: #252525;
+    font-family: "Poppins", sans-serif;
+    margin-bottom: 6px;
+}
+
+.dev-profile-text-sub {
+    font-size: 25px;
+    color: #9D9D9D;
+    font-family: "Poppins", sans-serif;
+}
+
+.developer-call-btn {
+    padding: 10px 30px;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    border: 1px solid white;
+    background-color: #4182F9;
+    color: #ffffff;
+    border-radius: 10px;
+    height: 60px;
+}
+
+.developer-call-btn:hover {
+    background-color: #01236a;
+}
+
+.dev-profile-skills {
+    margin-bottom: 30px;
+    margin-left: 60px;
+}
+
+.dev-profile-text-sub.rating {
+    color: green;
+}

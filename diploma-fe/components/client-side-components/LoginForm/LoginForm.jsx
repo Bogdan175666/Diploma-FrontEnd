@@ -1,8 +1,5 @@
 "use client"
-//TODO:
-//1.Correct styles
-//2. Connect with BE
-//3.
+
 import classes from './styles.module.css'
 import {Button, FormInput} from "@/shared/ui";
 

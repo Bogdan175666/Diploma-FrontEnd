@@ -10,7 +10,7 @@ const clientSchema = new Schema({
     game - Unity/Unreal Engine
      */
     desirableApp: {type: String, required: false},
-    assignedProject: {type: mongoose.Types.ObjectId, required: false, ref: 'Project'}
+    // assignedProject: {type: mongoose.Types.ObjectId, required: false, ref: 'Project'}
 })
 
 module.exports = mongoose.model('Client', clientSchema);

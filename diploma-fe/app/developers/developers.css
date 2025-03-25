@@ -1,0 +1,23 @@
+.developers-wrapper {
+    padding-left: 20vw;
+    padding-right: 20vw;
+    padding-top: 30px;
+    display: flex;
+    gap: 70px;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+
+.developers-title-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.developers-title {
+    color: #252525;
+    font-family: "Poppins", sans-serif;
+    font-size: 50px;
+    margin-bottom: 20px;
+    margin-top: 25px;
+}

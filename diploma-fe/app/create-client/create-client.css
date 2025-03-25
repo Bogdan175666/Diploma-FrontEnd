@@ -1,0 +1,26 @@
+.create-developer-wrapper {
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 25px;
+}
+
+.create-client-label {
+    font-size: 20px;
+    color: #252525;
+    margin-bottom: 15px;
+}
+
+.create-client-btn {
+    padding: 10px 30px;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    border: 1px solid white;
+    background-color: #4182F9;
+    color: #ffffff;
+    border-radius: 10px;
+    height: 60px;
+}
+
+.create-client-btn:hover {
+    background-color: #01236a;
+}
