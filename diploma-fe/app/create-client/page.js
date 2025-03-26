@@ -20,6 +20,8 @@ export default function CreateAClient() {
         const url = "http://localhost:4200/api/clients/createClient"
         const body = {
             name: name,
+            password: password,
+            email: email
         };
 
         try {

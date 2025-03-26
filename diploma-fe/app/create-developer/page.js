@@ -93,6 +93,8 @@ export default function CreateDeveloper () {
         const body = {
             name: name,
             skills: selectedSkills,
+            email: email,
+            password: password
         };
 
         try {

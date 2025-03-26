@@ -10,6 +10,8 @@ const clientSchema = new Schema({
     game - Unity/Unreal Engine
      */
     desirableApp: {type: String, required: false},
+    password: {type: String, required: false},
+    email: {type: String, required: false, unique: true}
     // assignedProject: {type: mongoose.Types.ObjectId, required: false, ref: 'Project'}
 })
 

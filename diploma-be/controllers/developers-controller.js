@@ -1,4 +1,6 @@
 const Developer = require("../models/developer");
+const bcrypt = require("bcryptjs");
+const generateToken = require("../utils/generateToken");
 
 const getDevelopers = async (req, res, next) => {
     let developers;
@@ -12,24 +14,35 @@ const getDevelopers = async (req, res, next) => {
 }
 
 const createDeveloper = async (req, res, next) => {
-    const {name, skills} = req.body;
+    const {name, skills, password, email} = req.body;
 
-    //Don't forget to make file uploader
-    const createdDev = new Developer({
-        name,
-        skills,
-        image: 'https://images.theconversation.com/files/393210/original/file-20210401-13-z6rl6z.jpg?ixlib=rb-4.1.0&rect=9%2C0%2C2994%2C1999&q=20&auto=format&w=320&fit=clip&dpr=2&usm=12&cs=strip',
-        rating: 0.0
-    });
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+
 
     try {
+        const existingDeveloper = await Developer.findOne({ email });
+        if (existingDeveloper) return res.status(400).json({ message: "Email already in use" });
+
+        const createdDev = new Developer({
+            name,
+            skills,
+            password: hashedPassword,
+            email,
+            image: 'https://images.theconversation.com/files/393210/original/file-20210401-13-z6rl6z.jpg?ixlib=rb-4.1.0&rect=9%2C0%2C2994%2C1999&q=20&auto=format&w=320&fit=clip&dpr=2&usm=12&cs=strip',
+            rating: 0.0
+        });
         await createdDev.save();
+
+        const token = generateToken(createdDev);
+
+        res.status(201).json({token: token, developer: createdDev});
+
     } catch (err) {
         console.log(err);
         return next(err);
     }
-
-    res.status(201).json({developer: createdDev});
 }
 
 const getDeveloperById = async (req, res, next) => {
