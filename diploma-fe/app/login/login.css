@@ -1,0 +1,26 @@
+.login-wrapper {
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 25px;
+}
+
+.login-label {
+    font-size: 20px;
+    color: #252525;
+    margin-bottom: 15px;
+}
+
+.login-btn {
+    padding: 10px 30px;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    border: 1px solid white;
+    background-color: #4182F9;
+    color: #ffffff;
+    border-radius: 10px;
+    height: 60px;
+}
+
+.login-btn:hover {
+    background-color: #01236a;
+}

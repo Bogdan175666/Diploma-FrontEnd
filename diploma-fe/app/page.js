@@ -3,6 +3,7 @@
 import "./home.css"
 import {HomeImage, HomeMarketing} from "@/components/server-side-components";
 import {useRouter} from "next/navigation";
+
 export default function Home() {
     const router = useRouter();
     const handleCreateADeveloper = () => {
@@ -13,13 +14,27 @@ export default function Home() {
         router.push('/create-client')
     }
 
+    const handleLogin = () => {
+        router.push('/login');
+    }
+
+    const handleLogOut = () => {
+        localStorage.clear();
+        router.push('/');
+    }
+
   return (
       <div>
           <main className="first-main">
               <div className="home-header">
                   <button onClick={handleCreateADeveloper} className="home-btn first-btn">Become a developer</button>
                   <button onClick={handleCreateAClient} className="home-btn client-btn">Become a client</button>
-                  <button className="home-btn">Sign Up</button>
+                  {localStorage.getItem('id') != null ? (
+                      <button onClick={handleLogOut} className="home-btn">Sign out</button>
+                  ) : (
+                      <button onClick={handleLogin} className="home-btn">Sign Up</button>
+                  )}
+
               </div>
 
               <div className="title-wrapper">
