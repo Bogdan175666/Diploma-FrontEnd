@@ -34,12 +34,12 @@ export default function Login() {
             const result = await response.json();
 
             if (result?.whoIsUser === 'client') {
-                localStorage.setItem('whoIs', result?.whoIsUser);
-                localStorage.setItem('id', result.user['_id'])
+                sessionStorage?.setItem('whoIs', result?.whoIsUser);
+                sessionStorage?.setItem('id', result.user['_id'])
                 router.push(`/developers`);
             } else {
-                localStorage.setItem('whoIs', result?.whoIsUser);
-                localStorage.setItem('id', result.user['_id'])
+                sessionStorage?.setItem('whoIs', result?.whoIsUser);
+                sessionStorage?.setItem('id', result.user['_id'])
                 router.push(`/developers/${result.user['_id']}`)
             }
         } catch (error) {

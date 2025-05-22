@@ -68,7 +68,9 @@ export default function DeveloperId () {
                                 <p className="dev-profile-text-sub">{developer.developer.name.toLowerCase().replace(" ", ".")}@gmail.com</p>
                             </div>
                         </div>
+                        {sessionStorage?.getItem('whoIs') === 'client' &&
                         <button className="developer-call-btn">Call me :)</button>
+                        }
                     </div>
 
                     <div className="dev-profile-skills">

@@ -4,6 +4,10 @@ import {TextField} from "@mui/material";
 import {useState} from "react";
 import {useRouter} from "next/navigation";
 import "./create-client.css"
+import {DatePicker, LocalizationProvider} from "@mui/x-date-pickers";
+import {DemoContainer} from "@mui/x-date-pickers/internals/demo";
+import dayjs from "dayjs";
+import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 
 export default function CreateAClient() {
     const [name, setName] = useState('');
@@ -12,7 +16,7 @@ export default function CreateAClient() {
     const [card, setCard] = useState({
         cardHolderName: '',
         cvv: '',
-        date: ''
+        date: null
     })
     const router = useRouter();
 
@@ -38,6 +42,7 @@ export default function CreateAClient() {
             }
 
             const result = await response.json();
+            sessionStorage?.setItem('whoIs', 'client');
             router.push(`/developers`);
         } catch (error) {
             console.error('Error:', error);
@@ -103,7 +108,7 @@ export default function CreateAClient() {
                         onChange={(e) => setCard((prevState) => {
                             return {
                                 ...prevState,
-                                cardHolderName: e.target.value
+                                cardHolderName: e.target.value.toUpperCase()
                             }
                         })}/>
                 </div>
@@ -112,9 +117,11 @@ export default function CreateAClient() {
                     <p className="create-client-label">Enter CVV</p>
                     <TextField
                         required
+                        type="password"
                         sx={{
                             width: "300px"
                         }}
+                        inputProps={{ maxLength: 3 }}
                         label="CVV"
                         variant="standard"
                         value={card.cvv}
@@ -132,20 +139,35 @@ export default function CreateAClient() {
 
             <div style={{marginBottom: "30px"}}>
                 <p className="create-client-label">Enter date</p>
-                <TextField
-                    required
-                    sx={{
-                        width: "300px"
-                    }}
-                    label="date"
-                    variant="standard"
-                    value={card.date}
-                    onChange={(e) => setCard((prevState) => {
-                        return {
-                            ...prevState,
-                            date: e.target.value
-                        }
-                    })}/>
+                {/*<TextField*/}
+                {/*    required*/}
+                {/*    sx={{*/}
+                {/*        width: "300px"*/}
+                {/*    }}*/}
+                {/*    label="Date"*/}
+                {/*    variant="standard"*/}
+                {/*    value={card.date}*/}
+                {/*    onChange={(e) => setCard((prevState) => {*/}
+                {/*        return {*/}
+                {/*            ...prevState,*/}
+                {/*            date: e.target.value*/}
+                {/*        }*/}
+                {/*    })}/>*/}
+
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <DemoContainer components={['DatePicker', 'DatePicker']}>
+                        <DatePicker
+                            label="Expiring date"
+                            value={card.date}
+                            onChange={(newValue) => setCard((prevState) => {
+                                return {
+                                    ...prevState,
+                                    date: newValue
+                                }
+                            })}
+                        />
+                    </DemoContainer>
+                </LocalizationProvider>
             </div>
 
             <div style={{

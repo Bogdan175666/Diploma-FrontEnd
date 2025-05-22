@@ -111,6 +111,7 @@ export default function CreateDeveloper () {
             }
 
             const result = await response.json();
+            sessionStorage?.setItem('whoIs', 'developer');
             router.push(`/developers/${result.developer['_id']}`);
         } catch (error) {
             console.error('Error:', error);

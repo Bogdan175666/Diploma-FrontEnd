@@ -19,7 +19,7 @@ export default function Home() {
     }
 
     const handleLogOut = () => {
-        localStorage.clear();
+        sessionStorage?.clear();
         router.push('/');
     }
 
@@ -29,7 +29,7 @@ export default function Home() {
               <div className="home-header">
                   <button onClick={handleCreateADeveloper} className="home-btn first-btn">Become a developer</button>
                   <button onClick={handleCreateAClient} className="home-btn client-btn">Become a client</button>
-                  {localStorage.getItem('id') != null ? (
+                  {sessionStorage?.getItem('whoIs') != null ? (
                       <button onClick={handleLogOut} className="home-btn">Sign out</button>
                   ) : (
                       <button onClick={handleLogin} className="home-btn">Sign Up</button>
